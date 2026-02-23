@@ -1,0 +1,206 @@
+.json-viewer-container {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.toggle-json-button {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-json-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.toggle-json-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+}
+
+.toggle-json-button:hover::before {
+    opacity: 1;
+}
+
+.json-content {
+    margin-top: 1.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        max-height: 2000px;
+        transform: translateY(0);
+    }
+}
+
+.json-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.json-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef);
+}
+
+.json-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.json-header h3::before {
+    content: '{ }';
+    color: #8b5cf6;
+    font-size: 1.3rem;
+}
+
+.copy-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.copy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+}
+
+.copy-button:active {
+    transform: translateY(0);
+}
+
+.json-pre {
+    margin: 0;
+    padding: 2rem;
+    color: #e2e8f0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    overflow-x: auto;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 27, 75, 0.5) 100%);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.json-pre::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+.json-pre::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.json-pre::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.json-pre::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #7c3aed, #a855f7);
+}
+
+/* Syntax highlighting effect */
+.json-pre::selection {
+    background: rgba(139, 92, 246, 0.3);
+}
+
+@media (max-width: 640px) {
+    .json-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .copy-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .json-pre {
+        font-size: 0.8rem;
+        padding: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .toggle-json-button {
+        font-size: 0.9rem;
+        padding: 1rem 1.5rem;
+    }
+}
