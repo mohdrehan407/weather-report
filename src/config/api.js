@@ -17,7 +17,7 @@
 export const API_KEY = 'YOUR_API_KEY_HERE';
 
 // API Base URL (HTTP for free tier, HTTPS for paid tier)
-export const API_URL = 'http://api.weatherstack.com/current';
+export const API_URL = 'https://api.weatherstack.com/current';
 
 // ================================================================
 // FREE TIER LIMITS (as of 2024):
