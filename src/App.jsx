@@ -6,7 +6,7 @@ import './App.css';
 
 // API KEY CONFIGURED
 const API_KEY = 'd8a352360130566d18eddf1960061f7b';
-const API_URL = 'http://api.weatherstack.com/current';
+const API_URL = 'https://api.weatherstack.com/current';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
